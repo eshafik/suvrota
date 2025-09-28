@@ -1,150 +1,851 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-   
-   
-    <head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suvrota - Elegant Cultural Fashion</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      :root {
+        --primary-black: #1a1a1a;
+        --soft-gray: #6b7280;
+        --light-gray: #f8fafc;
+        --medium-gray: #e2e8f0;
+        --white: #ffffff;
+        --accent-gold: #d4af37;
+        --hover-gray: #f1f5f9;
+        --border-gray: #e5e7eb;
+      }
 
-        <!-- META -->
-        <meta charset="utf-8">
-        <meta name="robots" content="noodp">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: var(--primary-black);
+        background-color: var(--white);
+      }
 
-        <!-- PAGE TITLE -->
-        <title>Suvrota</title>
+      /* Header */
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-gray);
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
 
-        <!-- FAVICON -->
-        <link rel="shortcut icon" href="assets/img/favicon.png">
+      .header.scrolled {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
 
-        <!-- FONTS -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
 
-        <!-- STYLESHEETS -->
-        <link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: var(--primary-black);
+        letter-spacing: -0.02em;
+      }
 
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2.5rem;
+      }
 
-    </head>
+      .nav-links a {
+        color: var(--primary-black);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
 
+      .nav-links a:hover {
+        color: var(--accent-gold);
+      }
 
-    <body>
-    
-       
-        <!-- PRELOADER -->
-        <div class="preloader">
-           
-            <!-- SPINNER -->
-            <div class="spinner">
-             
-              <div class="bounce-1"></div>
-              <div class="bounce-2"></div>
-              <div class="bounce-3"></div>
-              
-            </div>
-            <!-- /SPINNER -->
-            
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          var(--light-gray) 0%,
+          var(--white) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        margin-top: 80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -30%;
+        width: 80%;
+        height: 150%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(212, 175, 55, 0.03),
+          transparent
+        );
+        border-radius: 50%;
+        animation: rotate 20s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 2;
+        position: relative;
+        max-width: 900px;
+        padding: 0 2rem;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: var(--primary-black);
+        color: var(--white);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        letter-spacing: 0.5px;
+      }
+
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: var(--primary-black);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+        color: var(--soft-gray);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 3rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-primary {
+        background: var(--primary-black);
+        color: var(--white);
+        padding: 1rem 2.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .cta-primary:hover {
+        background: var(--accent-gold);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+      }
+
+      .cta-secondary {
+        background: var(--white);
+        color: var(--primary-black);
+        padding: 1rem 2.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 50px;
+        border: 2px solid var(--border-gray);
+        transition: all 0.3s ease;
+      }
+
+      .cta-secondary:hover {
+        border-color: var(--primary-black);
+        background: var(--primary-black);
+        color: var(--white);
+      }
+
+      /* Featured Collection */
+      .featured-collection {
+        padding: 8rem 0;
+        background: var(--white);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 5rem;
+      }
+
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 600;
+        color: var(--primary-black);
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--soft-gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .collection-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .product-card {
+        background: var(--white);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--border-gray);
+        transition: all 0.4s ease;
+        position: relative;
+        group: hover;
+      }
+
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        border-color: var(--accent-gold);
+      }
+
+      .product-image {
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+        background: var(--light-gray);
+      }
+
+      .dress-silhouette-1 {
+        background: linear-gradient(135deg, var(--light-gray), var(--white));
+        position: relative;
+      }
+
+      .dress-silhouette-1::after {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 200px;
+        background: var(--primary-black);
+        clip-path: polygon(40% 0%, 60% 0%, 80% 100%, 20% 100%);
+        opacity: 0.1;
+      }
+
+      .dress-silhouette-2 {
+        background: linear-gradient(
+          135deg,
+          var(--medium-gray),
+          var(--light-gray)
+        );
+        position: relative;
+      }
+
+      .dress-silhouette-2::after {
+        content: "";
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 140px;
+        height: 220px;
+        background: var(--soft-gray);
+        clip-path: polygon(45% 0%, 55% 0%, 90% 100%, 10% 100%);
+        opacity: 0.2;
+      }
+
+      .dress-silhouette-3 {
+        background: linear-gradient(
+          135deg,
+          var(--hover-gray),
+          var(--medium-gray)
+        );
+        position: relative;
+      }
+
+      .dress-silhouette-3::after {
+        content: "";
+        position: absolute;
+        top: 18%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 210px;
+        background: var(--accent-gold);
+        clip-path: polygon(
+          30% 0%,
+          70% 0%,
+          70% 80%,
+          90% 100%,
+          10% 100%,
+          30% 80%
+        );
+        opacity: 0.3;
+      }
+
+      .product-info {
+        padding: 2rem;
+      }
+
+      .product-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primary-black);
+        margin-bottom: 0.5rem;
+      }
+
+      .product-description {
+        color: var(--soft-gray);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .product-price {
+        font-weight: 600;
+        color: var(--primary-black);
+        font-size: 1.1rem;
+      }
+
+      /* About Section */
+      .about {
+        background: var(--light-gray);
+        padding: 8rem 0;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 600;
+        color: var(--primary-black);
+        margin-bottom: 2rem;
+        letter-spacing: -0.02em;
+      }
+
+      .about-text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--soft-gray);
+        margin-bottom: 1.5rem;
+      }
+
+      .about-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .stat {
+        text-align: center;
+        padding: 1.5rem;
+        background: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      }
+
+      .stat-number {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-black);
+        display: block;
+      }
+
+      .stat-label {
+        color: var(--soft-gray);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      .about-visual {
+        height: 500px;
+        background: var(--white);
+        border-radius: 24px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      }
+
+      .about-visual::before {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        width: 60%;
+        height: 60%;
+        background: var(--accent-gold);
+        opacity: 0.1;
+        clip-path: polygon(
+          20% 0%,
+          80% 0%,
+          100% 20%,
+          100% 80%,
+          80% 100%,
+          20% 100%,
+          0% 80%,
+          0% 20%
+        );
+        animation: pulse 4s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--primary-black);
+        color: var(--white);
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-section h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        color: var(--white);
+      }
+
+      .footer-section p {
+        color: var(--soft-gray);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .social-icon {
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+      }
+
+      .social-icon:hover {
+        background: var(--accent-gold);
+        transform: translateY(-2px);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: var(--soft-gray);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-gold);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--soft-gray);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .nav-container {
+          padding: 0 1rem;
+        }
+
+        .nav-links {
+          gap: 1.5rem;
+        }
+
+        .hero {
+          margin-top: 100px;
+          padding: 2rem 0;
+        }
+
+        .hero h1 {
+          font-size: 3rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .about-text h2 {
+          font-size: 2.8rem;
+        }
+
+        .section-title {
+          font-size: 2.8rem;
+        }
+
+        .collection-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+          padding: 0.8rem 2rem;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <nav class="nav-container">
+        <div class="logo">Suvrota</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-badge">✨ NEW COLLECTION 2025</div>
+        <h1>Where Tradition<br />Meets Modern Grace</h1>
+        <p>
+          Discover exquisite women's and girls' dresses that celebrate the rich
+          heritage of Bangladeshi and Indian culture with contemporary elegance.
+        </p>
+        <div class="cta-buttons">
+          <a href="#collection" class="cta-primary">
+            Explore Collection
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#about" class="cta-secondary">Learn Our Story</a>
         </div>
-        <!-- /PRELOADER -->
+      </div>
+    </section>
 
-
-        <!-- HERO -->
-        <div class="hero">
-
-
-            <!-- FRONT CONTENT -->
-            <div class="front-content">
-
-
-                <!-- CONTAINER MID -->
-                <div class="container-mid">
-
-
-                    <!-- ANIMATION CONTAINER -->
-                    <div class="animation-container animation-fade-down" data-animation-delay="0">
-                       
-                        <img class="img-responsive logo" src="assets/img/logo.png" alt="image">
-                        
-                    </div>
-                    <!-- /ANIMATION CONTAINER -->
-                    
-                    
-                    <!-- ANIMATION CONTAINER -->
-                    <div class="animation-container animation-fade-right" data-animation-delay="300">
-                        
-                        <h1>Suvrota | শুভ্রতা</h1>
-                        
-                    </div>
-                    <!-- /ANIMATION CONTAINER -->
-                    
-                    
-                    <!-- ANIMATION CONTAINER -->
-                    <div class="animation-container animation-fade-left" data-animation-delay="600"> 
-                       
-                        <p class="subline">শুভ্রতাই শুদ্ধতা</p>
-
-                        <p class="subline">Do you need this domain? Just send a email.</p>
-
-                        <p class="subline">Contact: shafik.se@hotmail.com</p>
-                        
-                    </div>
-                    <!-- /ANIMATION CONTAINER -->
-                    
-
-                    <!-- ANIMATION CONTAINER -->
-                    <div class="animation-container animation-fade-up" data-animation-delay="900"> 
-                       
-                        <!-- <div class="open-popup">Notify Me</div> -->
-                        
-                    </div>
-                    <!-- /ANIMATION CONTAINER -->
-                    
-
-                </div>
-                <!-- /CONTAINER MID -->
-
-
-                <!-- FOOTER -->
-                <div class="footer">
-                    
-
-                    <!-- ANIMATION CONTAINER -->
-                    <div class="animation-container animation-fade-up" data-animation-delay="1200">
-                       
-                        <p>© 2024-2099 MSI Shafik</p>
-                        
-                    </div>
-                    <!-- /ANIMATION CONTAINER -->
-                    
-
-                </div>
-                <!-- /FOOTER -->
-
-
-            </div>
-            <!-- /FRONT CONTENT -->
-
-
-            <!-- BACKGROUND CONTENT -->
-            <div class="background-content parallax-on">
-
-                <div class="background-overlay"></div>
-                <div class="background-img layer" data-depth="0.05"></div>
-                
-            </div>
-            <!-- /BACKGROUND CONTENT -->
-
-
+    <!-- Featured Collection -->
+    <section class="featured-collection" id="collection">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Collection</h2>
+          <p class="section-subtitle">
+            Handcrafted pieces that blend traditional artistry with modern
+            sophistication, designed for the contemporary woman who values
+            cultural heritage.
+          </p>
         </div>
-        <!-- /HERO -->
+        <div class="collection-grid">
+          <div class="product-card">
+            <div class="product-image dress-silhouette-1"></div>
+            <div class="product-info">
+              <h3 class="product-title">Royal Anarkali</h3>
+              <p class="product-description">
+                Inspired by Mughal elegance, this flowing silhouette features
+                intricate traditional motifs and premium fabrics for timeless
+                sophistication.
+              </p>
+              <div class="product-price">From $89</div>
+            </div>
+          </div>
 
+          <div class="product-card">
+            <div class="product-image dress-silhouette-2"></div>
+            <div class="product-info">
+              <h3 class="product-title">Bengal Beauty</h3>
+              <p class="product-description">
+                Contemporary cuts meet traditional Bengali embroidery patterns
+                in this stunning piece that celebrates cultural richness.
+              </p>
+              <div class="product-price">From $75</div>
+            </div>
+          </div>
 
-        <!-- JAVASCRIPTS -->
-        <script type="text/javascript" src="assets/js/plugins.js"></script>
-        <script type="text/javascript" src="assets/js/main.js"></script>
+          <div class="product-card">
+            <div class="product-image dress-silhouette-3"></div>
+            <div class="product-info">
+              <h3 class="product-title">Golden Heritage</h3>
+              <p class="product-description">
+                A celebration of traditional craftsmanship with gold-inspired
+                accents and luxurious fabrics that embody cultural elegance.
+              </p>
+              <div class="product-price">From $95</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Crafting Cultural Elegance</h2>
+            <p>
+              Suvrota was born from a passion to preserve and celebrate the rich
+              textile heritage of Bangladesh and India while creating
+              contemporary pieces for the modern woman.
+            </p>
+            <p>
+              Our designs honor traditional craftsmanship techniques passed down
+              through generations, reimagined with modern silhouettes and
+              premium materials that speak to today's fashion-conscious
+              consumers.
+            </p>
+            <p>
+              Every piece tells a story of cultural pride, artistic excellence,
+              and the timeless beauty of traditional dress reimagined for
+              contemporary life.
+            </p>
 
-    </body> 
-    
-    
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Happy Customers</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Unique Designs</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-visual"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Suvrota</h3>
+            <p>
+              Celebrating cultural elegance through contemporary fashion. Where
+              tradition meets modern style in every carefully crafted piece.
+            </p>
+            <div class="social-icons">
+              <a
+                href="https://facebook.com/suvr0ta"
+                class="social-icon"
+                target="_blank"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://instagram.com"
+                class="social-icon"
+                target="_blank"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://pinterest.com"
+                class="social-icon"
+                target="_blank"
+              >
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+              <a href="https://tiktok.com" class="social-icon" target="_blank">
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a href="https://youtube.com" class="social-icon" target="_blank">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Shop</h3>
+            <ul class="footer-links">
+              <li><a href="#collection">New Arrivals</a></li>
+              <li><a href="#collection">Dresses</a></li>
+              <li><a href="#collection">Traditional Wear</a></li>
+              <li><a href="#">Size Guide</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Support</h3>
+            <ul class="footer-links">
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">Care Guide</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <p>📧 hello@suvrota.com</p>
+            <p>📞 +880 1740999768</p>
+            <p>📍 Dhaka, Bangladesh</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Suvrota. All rights reserved. Designed with cultural
+            pride.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Add scroll effect to header
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
